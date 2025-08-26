@@ -1,6 +1,6 @@
-# OnLoan: Onchain P2P Lending App
+# ONLOAN: ONCHAIN PEER-TO-PEER LENDING APP
 
-## Overview
+## OVERVIEW
 OnLoan is a decentralized P2P lending platform using USDT for stable lending/borrowing, with ETH for fees/collateral. Features include credit scoring, loan types, pool lending, and auto-liquidation.
 
 ## PROBLEM
@@ -11,7 +11,7 @@ OnLoan is a decentralized P2P lending platform using USDT for stable lending/bor
 - User roles: Lender/Borrower
 - Credit scoring based on repayments
 - Loan types: Personal, Home, Business, Auto
-- Pool lending with APY
+- Pool lending with APY 
 - Dashboard for tracking
 - Secure smart contracts with OpenZeppelin
 
