@@ -1,4 +1,4 @@
-# ONLOAN: ONCHAIN PEER-TO-PEER LENDING APP
+# ONLOAN: DECENTRALIZED PEER-TO-PEER LENDING APP
 
 ## OVERVIEW
 OnLoan is a decentralized P2P lending platform using USDT for stable lending/borrowing, with ETH for fees/collateral. Features include credit scoring, loan types, pool lending, and auto-liquidation.
