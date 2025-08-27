@@ -26,9 +26,12 @@ OnLoan is a decentralized P2P lending platform using USDT for stable lending/bor
 ## TWITTER HANDLE
 
 ## LIVE LINK
+https://onloan.vercel.app/
 
 ## CONTRACT ADDRESS
 
 ## PITCH DECK
+https://drive.google.com/drive/u/1/folders/1cEPXpJHeuogLCfpmH1vxbxZyp_RLpEnn
 
 ## DEMO VIDEO
+https://www.loom.com/share/3f6da70a22124b6f85c03518623c199d?sid=e0704e2f-8815-438d-a5b3-d1dfe7f80292
