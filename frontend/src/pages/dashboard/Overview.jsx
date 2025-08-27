@@ -1,7 +1,41 @@
-// src/pages/dashboard/Overview.jsx (Enhanced with more features: Added progress ring for credit score, using SVG for uniqueness)
+// src/pages/dashboard/Overview.jsx
 import { useContext, useEffect, useState } from 'react';
 import { Web3Context } from '../../context/Web3Provider';
-import { FaChartPie, FaDollarSign, FaStar } from 'react-icons/fa';  // Added icons for better UX
+import { 
+  FaChartPie, 
+  FaDollarSign, 
+  FaStar, 
+  FaWallet, 
+  FaChartLine, 
+  FaHandHoldingUsd 
+} from 'react-icons/fa';
+import { ethers } from 'ethers';
+
+const StatCard = ({ title, value, icon: Icon, trend, prefix = '', suffix = '', decimals = 3 }) => (
+  <div className="bg-navy/30 backdrop-blur-sm rounded-xl p-6 border border-lime/20
+    hover:border-lime/50 transition-all duration-300 transform hover:-translate-y-1
+    hover:shadow-lg hover:shadow-lime/10">
+    <div className="flex items-center justify-between mb-4">
+      <h2 className="text-lg font-semibold text-gray-200">{title}</h2>
+      <Icon className="text-lime text-xl" />
+    </div>
+    <div className="space-y-2">
+      <div className="flex items-baseline">
+        <span className="text-2xl font-bold text-white">
+          {prefix}{typeof value === 'string' ? value : value.toFixed(decimals)}{suffix}
+        </span>
+      </div>
+      {trend && (
+        <div className="flex items-center text-sm">
+          <span className={trend > 0 ? 'text-green-400' : 'text-red-400'}>
+            {trend > 0 ? '↑' : '↓'} {Math.abs(trend)}%
+          </span>
+          <span className="text-gray-400 ml-1">vs last week</span>
+        </div>
+      )}
+    </div>
+  </div>
+);
 
 const Overview = () => {
   const { contract, address } = useContext(Web3Context);
@@ -14,11 +48,23 @@ const Overview = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (contract && address) {
-        setPoolLiquidity(ethers.formatUnits(await contract.totalPoolLiquidity(), 6));
-        setCreditScore(Number(await contract.creditScores(address)));
-        setBorrowLimit(ethers.formatUnits(await contract.borrowLimits(address), 6));
-        setLenderBalance(ethers.formatUnits(await contract.lenderBalances(address), 6));
-        setAccruedInterest(ethers.formatUnits(await contract.getAccruedInterest(address), 6));
+        try {
+          const [liquidity, score, limit, balance, interest] = await Promise.all([
+            contract.totalPoolLiquidity(),
+            contract.creditScores(address),
+            contract.borrowLimits(address),
+            contract.lenderBalances(address),
+            contract.getAccruedInterest(address)
+          ]);
+
+          setPoolLiquidity(ethers.formatUnits(liquidity, 6));
+          setCreditScore(Number(score));
+          setBorrowLimit(ethers.formatUnits(limit, 6));
+          setLenderBalance(ethers.formatUnits(balance, 6));
+          setAccruedInterest(ethers.formatUnits(interest, 6));
+        } catch (error) {
+          console.error('Error fetching dashboard data:', error);
+        }
       }
     };
     fetchData();
@@ -30,46 +76,106 @@ const Overview = () => {
   const strokeDashoffset = circumference - (scorePercentage / 100) * circumference;
 
   return (
-    <div className="font-sans">  {/* Clean font */}
-      <h1 className="text-3xl font-bold mb-6">Dashboard Overview</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white dark:bg-navy/50 p-6 rounded-lg shadow flex items-center space-x-4">
-          <FaChartPie className="text-lime text-4xl" />
-          <div>
-            <h2 className="text-xl font-semibold">Pool Liquidity</h2>
-            <p className="text-2xl">${poolLiquidity}</p>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-white to-lime bg-clip-text text-transparent">
+          Dashboard Overview
+        </h1>
+        <p className="text-gray-400 mt-2">Monitor your lending and borrowing activities</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Credit Score Card */}
+        <div className="bg-navy/30 backdrop-blur-sm rounded-xl p-6 border border-lime/20
+          hover:border-lime/50 transition-all duration-300 transform hover:-translate-y-1
+          hover:shadow-lg hover:shadow-lime/10">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-lg font-semibold text-gray-200">Credit Score</h2>
+            <FaStar className="text-lime text-xl" />
+          </div>
+          <div className="flex justify-center">
+            <div className="relative">
+              <svg className="w-36 h-36 transform -rotate-90">
+                <circle
+                  cx="72"
+                  cy="72"
+                  r="45"
+                  stroke="currentColor"
+                  strokeWidth="8"
+                  fill="none"
+                  className="text-gray-700"
+                />
+                <circle
+                  cx="72"
+                  cy="72"
+                  r="45"
+                  stroke="currentColor"
+                  strokeWidth="8"
+                  fill="none"
+                  strokeDasharray={circumference}
+                  strokeDashoffset={strokeDashoffset}
+                  className="text-lime transition-all duration-1000 ease-out"
+                />
+              </svg>
+              <div className="absolute inset-0 flex items-center justify-center flex-col">
+                <span className="text-3xl font-bold text-white">{creditScore}</span>
+                <span className="text-sm text-gray-400">out of 1000</span>
+              </div>
+            </div>
+          </div>
+          <div className="mt-4 text-center">
+            <p className="text-gray-400">Your credit rating is</p>
+            <p className="text-lg font-semibold text-lime">
+              {creditScore >= 800 ? 'Excellent' :
+               creditScore >= 600 ? 'Good' :
+               creditScore >= 400 ? 'Fair' : 'Poor'}
+            </p>
           </div>
         </div>
-        <div className="bg-white dark:bg-navy/50 p-6 rounded-lg shadow flex flex-col items-center">
-          <h2 className="text-xl font-semibold mb-2">Credit Score</h2>
-          <svg className="w-32 h-32">
-            <circle cx="64" cy="64" r="45" stroke="gray" strokeWidth="10" fill="none" />
-            <circle cx="64" cy="64" r="45" stroke="lime" strokeWidth="10" fill="none"
-              strokeDasharray={circumference} strokeDashoffset={strokeDashoffset}
-              transform="rotate(-90 64 64)" />
-            <text x="64" y="64" textAnchor="middle" dy=".3em" className="text-2xl">{creditScore}</text>
-          </svg>
-        </div>
-        <div className="bg-white dark:bg-navy/50 p-6 rounded-lg shadow flex items-center space-x-4">
-          <FaDollarSign className="text-lime text-4xl" />
-          <div>
-            <h2 className="text-xl font-semibold">Borrow Limit</h2>
-            <p className="text-2xl">${borrowLimit}</p>
-          </div>
-        </div>
-        <div className="bg-white dark:bg-navy/50 p-6 rounded-lg shadow flex items-center space-x-4">
-          <FaStar className="text-lime text-4xl" />
-          <div>
-            <h2 className="text-xl font-semibold">Your Lent Balance</h2>
-            <p className="text-2xl">${lenderBalance}</p>
-          </div>
-        </div>
-        <div className="bg-white dark:bg-navy/50 p-6 rounded-lg shadow flex items-center space-x-4">
-          <FaDollarSign className="text-lime text-4xl" />
-          <div>
-            <h2 className="text-xl font-semibold">Accrued Interest</h2>
-            <p className="text-2xl">${accruedInterest}</p>
-          </div>
+
+        {/* Pool Liquidity Card */}
+        <StatCard
+          title="Pool Liquidity"
+          value={parseFloat(poolLiquidity)}
+          icon={FaChartPie}
+          prefix="$"
+          trend={5.2}
+        />
+
+        {/* Borrow Limit Card */}
+        <StatCard
+          title="Borrow Limit"
+          value={parseFloat(borrowLimit)}
+          icon={FaHandHoldingUsd}
+          prefix="$"
+          trend={2.8}
+        />
+
+        {/* Lender Balance Card */}
+        <StatCard
+          title="Your Balance"
+          value={parseFloat(lenderBalance)}
+          icon={FaWallet}
+          prefix="$"
+          decimals={3}
+        />
+
+        {/* Accrued Interest Card */}
+        <StatCard
+          title="Accrued Interest"
+          value={parseFloat(accruedInterest)}
+          icon={FaChartLine}
+          prefix="$"
+          trend={3.5}
+        />
+      </div>
+
+      {/* Recent Activity Section */}
+      <div className="bg-navy/30 backdrop-blur-sm rounded-xl p-6 border border-lime/20">
+        <h2 className="text-xl font-semibold text-gray-200 mb-4">Recent Activity</h2>
+        <div className="space-y-4">
+          {/* Placeholder for recent activities */}
+          <p className="text-gray-400">No recent activities to display.</p>
         </div>
       </div>
     </div>

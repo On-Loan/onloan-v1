@@ -28,17 +28,19 @@ const Home = () => {
   }
 
   return (
-    <div className="bg-navy min-h-screen text-white">
+    <div className="bg-navy min-h-screen text-white ">
+      <div className='w-full lg:w-[1400px] mx-auto'>
       <Navbar onGetStarted={handleGetStarted} showGetStarted={true} showWallet={false} />
       <HeroSection />
-      <section className="py-10 px-4 flex flex-col md:flex-row justify-between max-w-6xl mx-auto">
+      {/* <section className="py-10 px-4 flex flex-col md:flex-row justify-between max-w-6xl mx-auto">
+        <LoanSelector />
+      </section> */}
         <LoanTypes />
-        {/* <LoanSelector /> */}
-      </section>
       <HowToUse />
       <WhatWeDo />
       <Roadmap />
       <Footer />
+      </div>
     </div>
   );
 };
