@@ -11,7 +11,7 @@ Existing problems in P2P lending:
 - Fragmented liquidity: P2P matching limits liquidity and causes inefficiency. It leads to long matching times, low utilisation, poor capital efficicency.
 - Slow liquidation: Slow or delayed liquidation leads to bad debt during market crashes. Many platforms rely on bots or third-party artbitrage to liquidate positions.
 - High gas: ETH's gas fees can be prohibitive, especially for small loans or frequesnt interactions.
-  
+
 ## SOLUTIONS
 Solutions OnLoan will provide:
 - Stablecoin lending with USDT: Stable currency reduces repayment uncertainty for borrowers and protects lender capital from volatility.
