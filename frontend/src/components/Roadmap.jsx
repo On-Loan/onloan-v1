@@ -1,25 +1,25 @@
 const Roadmap = () => {
   const milestones = [
     {
-      quarter: 'Q1 2024',
+      quarter: 'Q3 2025',
       title: 'Platform Launch',
       desc: 'Launch of our MVP with core lending and borrowing functionality, smart contract audits, and initial liquidity pools.',
       status: 'completed'
     },
     {
-      quarter: 'Q2 2024',
+      quarter: 'Q4 2025',
       title: 'Multi-Chain Expansion',
       desc: 'Integration with multiple blockchain networks to provide cross-chain lending and borrowing capabilities.',
       status: 'in-progress'
     },
     {
-      quarter: 'Q3 2024',
+      quarter: 'Q4 2025',
       title: 'NFT Collateral',
       desc: 'Support for NFTs as collateral, enabling users to leverage their digital assets.',
       status: 'upcoming'
     },
     {
-      quarter: 'Q4 2024',
+      quarter: 'Q1 2026',
       title: 'DAO Governance',
       desc: 'Launch of DAO governance system and native token for community-driven decision making.',
       status: 'upcoming'

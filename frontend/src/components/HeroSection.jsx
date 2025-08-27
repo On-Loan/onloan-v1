@@ -1,8 +1,15 @@
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { Web3Context } from '../context/Web3Provider';
+import { toast } from 'react-toastify';
+
 const HeroSection = () => {
+  const navigate = useNavigate();
+  const { address } = useContext(Web3Context);
   return (
     <section className="relative bg-navy text-white overflow-hidden">
       {/* Background gradient effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-lime/10 to-transparent"></div>
+      {/* <div className="absolute inset-0 bg-gradient-to-br from-lime/10 to-transparent"></div> */}
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between py-20 md:py-32">
@@ -15,12 +22,25 @@ const HeroSection = () => {
               Experience the future of P2P lending with our secure and efficient platform
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <button className="px-8 py-4 bg-gradient-to-r from-lime to-lime/90 text-navy rounded-lg font-bold text-lg 
-                hover:shadow-lg hover:shadow-lime/20 transition-all duration-300 transform hover:scale-105">
+              <button 
+                onClick={() => {
+                  if (address) {
+                    toast.info('Already connected! Redirecting to dashboard...');
+                    navigate('/dashboard/lend');
+                  } else {
+                    toast.info('Please connect your wallet first');
+                  }
+                }}
+                className="px-8 py-4 bg-gradient-to-r from-lime to-lime/90 text-navy rounded-lg font-bold text-lg 
+                  hover:shadow-lg hover:shadow-lime/20 transition-all duration-300 transform hover:scale-105"
+              >
                 Start Lending
               </button>
-              <button className="px-8 py-4 bg-transparent border-2 border-lime text-lime rounded-lg font-bold text-lg 
-                hover:bg-lime/10 transition-all duration-300">
+              <button 
+                onClick={() => navigate('/about')}
+                className="px-8 py-4 bg-transparent border-2 border-lime text-lime rounded-lg font-bold text-lg 
+                  hover:bg-lime/10 transition-all duration-300"
+              >
                 Learn More
               </button>
             </div>

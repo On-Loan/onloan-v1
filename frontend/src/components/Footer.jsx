@@ -24,12 +24,12 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: <FaTwitter className="h-6 w-6" />, href: 'https://twitter.com/onloan' },
-    { icon: <FaDiscord className="h-6 w-6" />, href: 'https://discord.gg/onloan' },
-    { icon: <FaTelegram className="h-6 w-6" />, href: 'https://t.me/onloan' },
-    { icon: <FaGithub className="h-6 w-6" />, href: 'https://github.com/onloan' },
-    { icon: <FaMedium className="h-6 w-6" />, href: 'https://medium.com/onloan' },
-    { icon: <FaLinkedin className="h-6 w-6" />, href: 'https://linkedin.com/company/onloan' },
+    { icon: <FaTwitter className="h-6 w-6" />, href: '#' },
+    { icon: <FaGithub className="h-6 w-6" />, href: 'https://github.com/On-Loan/onloan-v1' },
+    // { icon: <FaDiscord className="h-6 w-6" />, href: '#' },
+    // { icon: <FaTelegram className="h-6 w-6" />, href: '#' },
+    // { icon: <FaMedium className="h-6 w-6" />, href: '#' },
+    // { icon: <FaLinkedin className="h-6 w-6" />, href: '#' },
   ];
 
   return (

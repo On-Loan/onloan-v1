@@ -6,7 +6,7 @@ import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 const Support = () => {
   const faqs = [
-    { question: 'How do I connect my wallet?', answer: 'Click "Get Started" and select MetaMask or compatible wallet.' },
+    { question: 'How do I connect my wallet?', answer: 'Click "Connect Wallet" and select MetaMask or compatible wallet.' },
     { question: 'What is the minimum borrow amount?', answer: 'For new users, it starts at $10 USDT.' },
     { question: 'How is interest calculated?', answer: 'Fixed or variable rates based on loan type, accrued over time.' },
     { question: 'What happens if I default?', answer: 'Collateral is liquidated automatically via smart contracts.' },

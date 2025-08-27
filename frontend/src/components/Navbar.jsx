@@ -22,7 +22,7 @@ const Navbar = ({ onGetStarted, showWallet = false, showGetStarted = true }) => 
   `;
 
   return (
-    <nav className="relative flex justify-between items-center p-6 bg-navy text-white font-sans shadow-lg">
+    <nav className="relative flex justify-between w-full lg:w-[1400px] mx-auto items-center p-6 text-white font-sans shadow-lg">
       <Link to="/" className="text-lime transition-transform duration-300 hover:scale-105">
         <img src="/logo.svg" alt="OnLoan" className="h-12" />
       </Link>
@@ -96,7 +96,7 @@ const Navbar = ({ onGetStarted, showWallet = false, showGetStarted = true }) => 
             font-semibold shadow-lg hover:shadow-lime/20 hover:scale-105 
             transition-all duration-300 mt-4 text-lg"
           >
-            Get Started
+            Connect Wallet
           </button>
         )}
       </div>
@@ -110,7 +110,7 @@ const Navbar = ({ onGetStarted, showWallet = false, showGetStarted = true }) => 
             font-semibold shadow-lg hover:shadow-lime/20 hover:scale-105 
             transition-all duration-300"
           >
-            Get Started
+            Connect Wallet
           </button>
         )}
       </div>

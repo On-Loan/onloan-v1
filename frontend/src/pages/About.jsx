@@ -7,10 +7,10 @@ import { motion } from 'framer-motion';
 const About = () => {
   const team = [
     {
-      name: 'John Doe',
-      role: 'Founder & CEO',
-      bio: 'Blockchain enthusiast with 10+ years in fintech. Pioneer in DeFi solutions.',
-      image: 'https://randomuser.me/api/portraits/men/1.jpg',
+      name: 'Goekcen B.',
+      role: 'Founder & Team Lead',
+      bio: 'Expert in ZKP and Solidity with a passion for secure, scalable solutions.',
+      image: '',
       social: {
         linkedin: '#',
         github: '#',
@@ -18,27 +18,27 @@ const About = () => {
       }
     },
     {
-      name: 'Jane Smith',
-      role: 'Lead Developer',
-      bio: 'Expert in Solidity and React.js with a passion for secure, scalable solutions.',
-      image: 'https://randomuser.me/api/portraits/women/1.jpg',
+      name: 'Akanimoh Johnson',
+      role: 'Developer & Founder ',
+      bio: 'Blockchain Developer with 2 years in fintech. Pioneer in DeFi solutions.',
+      image: '',
       social: {
         linkedin: '#',
         github: '#',
         twitter: '#'
       }
     },
-    {
-      name: 'Alex Johnson',
-      role: 'Product Designer',
-      bio: 'UI/UX specialist focusing on creating intuitive DeFi experiences.',
-      image: 'https://randomuser.me/api/portraits/men/2.jpg',
-      social: {
-        linkedin: '#',
-        github: '#',
-        twitter: '#'
-      }
-    },
+    // {
+    //   name: 'Alex Johnson',
+    //   role: 'Product Designer',
+    //   bio: 'UI/UX specialist focusing on creating intuitive DeFi experiences.',
+    //   image: 'https://randomuser.me/api/portraits/men/2.jpg',
+    //   social: {
+    //     linkedin: '#',
+    //     github: '#',
+    //     twitter: '#'
+    //   }
+    // },
   ];
 
   const containerVariants = {
@@ -181,7 +181,7 @@ const About = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
           >
             {team.map((member, i) => (
               <motion.div
