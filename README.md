@@ -37,6 +37,9 @@ Solutions OnLoan will provide:
 
 ## FIGMA
 
+<img width="1387" height="820" alt="Screenshot 2025-08-27 at 15 46 48" src="https://github.com/user-attachments/assets/6d3d46f1-abe4-4a3f-9a07-93884fb2d87e" />
+
+
 ## TWITTER HANDLE
 
 ## LIVE LINK
