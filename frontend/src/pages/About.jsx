@@ -6,17 +6,17 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   const team = [
-    {
-      name: 'Goekcen B.',
-      role: 'Founder & Team Lead',
-      bio: 'Expert in ZKP and Solidity with a passion for secure, scalable solutions.',
-      image: '',
-      social: {
-        linkedin: '#',
-        github: '#',
-        twitter: '#'
-      }
-    },
+    // {
+    //   name: 'Goekcen B.',
+    //   role: 'Founder & Team Lead',
+    //   bio: 'Expert in ZKP and Solidity with a passion for secure, scalable solutions.',
+    //   image: '',
+    //   social: {
+    //     linkedin: '#',
+    //     github: '#',
+    //     twitter: '#'
+    //   }
+    // },
     {
       name: 'Akanimoh Johnson',
       role: 'Developer & Founder ',
