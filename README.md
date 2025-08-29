@@ -48,7 +48,7 @@ https://onloan.vercel.app/
 ## CONTRACT ADDRESS
 
 ## PITCH DECK
-https://drive.google.com/drive/u/1/folders/1cEPXpJHeuogLCfpmH1vxbxZyp_RLpEnn
+https://docs.google.com/presentation/d/18vplb4GclK_XX9YdE7icnqP_705vJmIg7Uvs0PJATOM/edit?usp=sharing
 
 ## DEMO VIDEO
 https://www.loom.com/share/3f6da70a22124b6f85c03518623c199d?sid=e0704e2f-8815-438d-a5b3-d1dfe7f80292
